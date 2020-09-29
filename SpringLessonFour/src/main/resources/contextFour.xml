@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-lazy-init="true">
+        default-init-method="initObject"
+        default-destroy-method="destroyObject"
+
+
+    <import resource="toshiba.xml"/>
+
+    <bean id="t1000v2" class="org.example.robot.ModelT1000"
+        p:hand-ref="toshibaHand"  p:head-ref="toshibaHead" p:leg-ref="toshibaLeg"
+        scope="prototype">
+
+        <constructor-arg value="Green" index="0" type="java.lang.String"/>
+        <constructor-arg value="1995" index="1" type="int"/>
+        <constructor-arg value="true" index="2" type="boolean"/>
+
+<!--                <property name="hand" ref="toshibaHand"/>-->
+<!--                <property name="head" ref="toshibaHead"/>-->
+<!--                <property name="leg"  ref="toshibaLeg"/>-->
+    </bean>
+
+    <bean id="t1000Full" class="org.example.robot.ModelT1000" scope="prototype">
+
+        <constructor-arg ref="toshibaHand"></constructor-arg>
+        <constructor-arg ref="toshibaHead"></constructor-arg>
+        <constructor-arg ref="toshibaLeg"></constructor-arg>
+        <constructor-arg value="Yellow" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="2000" type="int"></constructor-arg>
+        <constructor-arg value="false" type="boolean"></constructor-arg>
+
+    </bean>
+</beans>
